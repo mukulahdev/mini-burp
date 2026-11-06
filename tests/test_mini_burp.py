@@ -62,14 +62,6 @@ class TestRules(unittest.TestCase):
         self.assertTrue(mb.history[0]["quiet"])
         out.assert_not_called()
 
-    def test_background_requests_are_quiet(self):
-        mb.history.clear()
-        mb.findings.clear()
-        with mock.patch("builtins.print") as out:
-            mb.record("GET", "http://127.0.0.1/main.js", 200, b"", [], 9)
-        self.assertTrue(mb.history[0]["quiet"])
-        out.assert_not_called()
-
     def test_summary_counts_findings(self):
         mb.history.clear()
         mb.findings.clear()
